@@ -1,2 +1,2 @@
-# Red-or-Green
+# Red or Green?
 A simple video game !
