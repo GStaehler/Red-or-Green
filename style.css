@@ -3,6 +3,8 @@ body {
 	padding-top: 28px;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	color: white;
+	cursor: default;
+	user-select: none;
 }
 
 button {
@@ -18,14 +20,12 @@ button {
 	border-radius: 40px;
 	box-shadow: 0 18px 0px #024a17;
 	outline: none;
-
 }
 
 button:focus {
 	box-shadow: 0px 6px 0px #024a17;
 	position: relative;
 	top: 4px;
-
 }
 
 #left {
