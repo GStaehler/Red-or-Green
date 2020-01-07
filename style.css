@@ -16,25 +16,28 @@ button {
 	background: #26af54;
 	color: white;
 	text-decoration: none;
-	border: 0px;
+	border: 0;
 	border-radius: 40px;
-	box-shadow: 0 18px 0px #024a17;
-	outline: none;
+	box-shadow: 0 18px 0 #024a17;
 }
 
 button:focus {
-	box-shadow: 0px 6px 0px #024a17;
+	box-shadow: 0 6px 0 #024a17;
 	position: relative;
 	top: 4px;
 }
 
+button::-moz-focus-inner {
+	border: 0;
+}
+
 #left {
 	background: red;
-	box-shadow: 0 18px 0px brown;
+	box-shadow: 0 18px 0 brown;
 }
 
 #left:focus {
-	box-shadow: 0 6px 0px brown;
+	box-shadow: 0 6px 0 brown;
 }
 
 .row {
@@ -48,6 +51,7 @@ button:focus {
 #points {
 	font-size: 60px;
 	text-align: center;
+	margin-bottom: 30px;
 }
 
 #name {
@@ -56,9 +60,16 @@ button:focus {
 	position: relative;
 }
 
+#best {
+	text-align: center;
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 60px;
+}
+
 @keyframes bouncing {
 	0% {
-		top: 0px;
+		top: 0;
 	}
 
 	20% {
@@ -78,6 +89,6 @@ button:focus {
 	}
 
 	100% {
-		top: 0px;
+		top: 0;
 	}
 }

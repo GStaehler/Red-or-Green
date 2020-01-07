@@ -1,15 +1,53 @@
-var myArray = [
+let db = new PouchDB("redorgreen");
+
+db.get('bestScore').then(function (doc) {
+	console.log(doc);
+}).catch(function (err) {
+	db.put({
+		_id: 'bestScore',
+		bestScore: 0
+	}).then(function (response) {
+		window.location.reload();
+	}).catch(function (err) {
+		console.log(err);
+	});
+});
+
+let myArray = [
   "pink",
   "lightgreen"
 ];
 
 function gameOver() {
+	let lastScore = document.getElementById("points").textContent;
+	console.log(lastScore);
+	db.get('bestScore').then(function(doc) {
+		if (lastScore > doc.bestScore) {
+		return db.put({
+			_id: doc._id,
+			_rev: doc._rev,
+			bestScore: lastScore
+		})}
+	}).then(function(response) {
+		db.get('bestScore').then(function (doc) {
+			document.getElementById("best").textContent = "Best Score : " + doc.bestScore;
+		}).catch(function (err) {
+			console.log(err);
+		});
+	}).catch(function (err) {
+		console.log(err);
+	});
 	document.body.style.backgroundColor = "lightblue";
 	document.getElementById("points").textContent = "Retry? Press Enter";
 	game();
 }
 
 function game() {
+	db.get('bestScore').then(function (doc) {
+		document.getElementById("best").textContent = "Best Score : " + doc.bestScore;
+	}).catch(function (err) {
+		console.log(err);
+	});
 	let points = 1;
 	document.onkeydown = function (e) {
 		let keyCode = e.keyCode;
