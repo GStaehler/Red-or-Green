@@ -22,7 +22,7 @@ function gameOver() {
 	let lastScore = document.getElementById("points").textContent;
 	console.log(lastScore);
 	db.get('bestScore').then(function(doc) {
-		if (lastScore > doc.bestScore) {
+		if (lastScore > doc.bestScore && lastScore !== "Retry? Press Enter") {
 		return db.put({
 			_id: doc._id,
 			_rev: doc._rev,
